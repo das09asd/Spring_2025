@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Заголовок страницы -->
+    <title>NeSteam - О нас</title>
+   
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка сайта (одинаковая для всех страниц) -->
+    <div class="header">
+        <h1>NeSteam</h1>
+        <div class="nav">
+            <a href="index.html">Главная</a>
+            <a href="games.html">Магазин</a>
+            <a href="about.html" class="active">О нас</a>
+        </div>
+    </div>
+
+    <!-- Основное содержимое страницы -->
+    <div class="content">
+        <h2>О нашей платформе</h2>
+        
+        <!-- Блок с основной информацией -->
+        <div class="about-section">
+            <p>NeSteam - это платформа для распространения цифровых игр, созданная в 2025 году в учебных целях.</p>
+            <p>Наша миссия - предоставлять геймерам удобный доступ к лучшим играм по справедливым ценам.</p>
+        </div>
+        
+        <!-- Блок с информацией о разработчике -->
+        <div class="developer-info">
+            <h3>Наш разработчик</h3>
+            <div class="developer-card">
+                <h4>Гостев П.А.</h4>
+                <p><strong>Группа:</strong> 24-ВМз</p>
+            </div>
+        </div>
+        
+        <!-- Блок контактов -->
+        <div class="contacts">
+            <h3>Как с нами связаться</h3>
+            <p>Email: <a href="mailto:support@mail.ru">support@mail.ru</a></p>
+            <p>Телефон: +7 (903) 999-88-66</p>
+            <p>Режим работы: 24/7</p>
+        </div>
+    </div>
+
+    <!-- Корзина (общая для всех страниц) -->
+    <div class="cart" onclick="toggleCart()">Корзина: <span id="cartCount">0</span></div>
+    <div class="cart-popup" id="cartPopup">
+        <h3>Ваши игры:</h3>
+        <div id="cartItems"></div>
+        <div class="cart-sum">Итого: <span id="cartTotal">0</span> ₽</div>
+        <button onclick="clearCart()">Очистить</button>
+    </div>
+
+    <!-- JavaScript для работы корзины -->
+    <script>
+        // Массив для хранения товаров
+        let cart = [];
+        
+        // Объект с ценами товаров
+        const prices = {
+            'CyberWorld': 1299,
+            'SpaceWar': 999,
+            'Zombie Survival': 799,
+            'Fantasy Kingdom': 1499
+        };
+        
+        // Функция переключения видимости корзины
+        function toggleCart() {
+            const popup = document.getElementById('cartPopup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Функция обновления содержимого корзины
+        function updateCart() {
+            document.getElementById('cartCount').textContent = cart.length;
+            document.getElementById('cartItems').innerHTML = cart.map(game => `
+                <div class="cart-item">
+                    ${game} - ${prices[game]} ₽
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, game) => sum + prices[game], 0);
+            document.getElementById('cartTotal').textContent = total;
+        }
+        
+        // Функция очистки корзины
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

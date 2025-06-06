@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Заголовок страницы магазина -->
+    <title>NeSteam - Магазин</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Общая шапка сайта -->
+    <div class="header">
+        <h1>NeSteam</h1>
+        <div class="nav">
+            <a href="index.html">Главная</a>
+            <a href="games.html" class="active">Магазин</a>
+            <a href="about.html">О нас</a>
+        </div>
+    </div>
+
+    <!-- Основной контент страницы -->
+    <div class="content">
+        <h2>Магазин игр</h2>
+        
+        <!-- Карточка игры 1 -->
+        <div class="game">
+            <h3>CyberWorld</h3>
+            <p>Открытый мир будущего с продвинутым ИИ и киберпанк-стилистикой</p>
+            <p>Цена: 1299 ₽</p>
+            <!-- Кнопка добавления в корзину с вызовом функции -->
+            <button onclick="addToCart('CyberWorld')">В корзину</button>
+        </div>
+        
+        <!-- Карточка игры 2 -->
+        <div class="game">
+            <h3>SpaceWar</h3>
+            <p>Космические баталии с реалистичной физикой и огромными кораблями</p>
+            <p>Цена: 999 ₽</p>
+            <button onclick="addToCart('SpaceWar')">В корзину</button>
+        </div>
+        
+        <!-- Карточка игры 3 -->
+        <div class="game">
+            <h3>Zombie Survival</h3>
+            <p>Выживание в мире после зомби-апокалипсиса с элементами RPG</p>
+            <p>Цена: 799 ₽</p>
+            <button onclick="addToCart('Zombie Survival')">В корзину</button>
+        </div>
+        
+        <!-- Карточка игры 4 -->
+        <div class="game">
+            <h3>Fantasy Kingdom</h3>
+            <p>Стратегия по строительству и управлению средневековым королевством</p>
+            <p>Цена: 1499 ₽</p>
+            <button onclick="addToCart('Fantasy Kingdom')">В корзину</button>
+        </div>
+    </div>
+
+    <!-- Общие элементы корзины (аналогичны главной странице) -->
+    <div class="cart" onclick="toggleCart()">Корзина: <span id="cartCount">0</span></div>
+    <div class="cart-popup" id="cartPopup">
+        <h3>Ваши игры:</h3>
+        <div id="cartItems"></div>
+        <div class="cart-sum">Итого: <span id="cartTotal">0</span> ₽</div>
+        <button onclick="clearCart()">Очистить</button>
+    </div>
+
+    <script>
+        // Массив корзины и объект цен
+        let cart = [];
+        const prices = {
+            'CyberWorld': 1299,
+            'SpaceWar': 999,
+            'Zombie Survival': 799,
+            'Fantasy Kingdom': 1499
+        };
+        
+        // Функция добавления в корзину
+        function addToCart(game) {
+            cart.push(game);
+            updateCart();
+            // Показываем уведомление о добавлении
+            alert(`${game} добавлен в корзину за ${prices[game]} ₽`);
+        }
+        
+        // Остальные функции аналогичны главной странице
+        function toggleCart() {
+            const popup = document.getElementById('cartPopup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function updateCart() {
+            document.getElementById('cartCount').textContent = cart.length;
+            document.getElementById('cartItems').innerHTML = cart.map(game => `
+                <div class="cart-item">
+                    ${game} - ${prices[game]} ₽
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, game) => sum + prices[game], 0);
+            document.getElementById('cartTotal').textContent = total;
+        }
+        
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

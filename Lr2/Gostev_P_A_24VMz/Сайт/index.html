@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Основные настройки страницы -->
+    <title>NeSteam - Главная</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка сайта с логотипом и навигацией -->
+    <div class="header">
+        <h1>NeSteam</h1>
+        <div class="nav">
+            <!-- Активная ссылка выделяется -->
+            <a href="index.html" class="active">Главная</a>
+            <a href="games.html">Магазин</a>
+            <a href="about.html">О нас</a>
+        </div>
+    </div>
+
+    <!-- Основное содержимое страницы -->
+    <div class="content">
+        <h2>Добро пожаловать в NeSteam!</h2>
+        <p>Лучшие игры по лучшим ценам</p>
+        <!-- Кнопка перехода в магазин -->
+        <a href="games.html" class="button">К играм</a>
+        
+        <!-- Блок преимуществ платформы -->
+        <div class="advantages">
+            <h3>Почему стоит покупать у нас?</h3>
+            <ul>
+                <li>🔹 Самые низкие цены на рынке</li>
+                <li>🔹 Мгновенная доставка ключей</li>
+                <li>🔹 Официальные лицензии</li>
+                <li>🔹 Круглосуточная поддержка</li>
+                <li>🔹 Бонусы постоянным клиентам</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Корзина - фиксированный элемент в правом нижнем углу -->
+    <div class="cart" onclick="toggleCart()">Корзина: <span id="cartCount">0</span></div>
+    <!-- Всплывающее окно корзины -->
+    <div class="cart-popup" id="cartPopup">
+        <h3>Ваши игры:</h3>
+        <!-- Список товаров в корзине -->
+        <div id="cartItems"></div>
+        <!-- Общая сумма заказа -->
+        <div class="cart-sum">Итого: <span id="cartTotal">0</span> ₽</div>
+        <!-- Кнопка очистки корзины -->
+        <button onclick="clearCart()">Очистить</button>
+    </div>
+
+    <!-- JavaScript для работы корзины -->
+    <script>
+        // Массив для хранения товаров в корзине
+        let cart = [];
+        
+        // Объект с ценами товаров
+        const prices = {
+            'CyberWorld': 1299,
+            'SpaceWar': 999,
+            'Zombie Survival': 799,
+            'Fantasy Kingdom': 1499
+        };
+        
+        // Функция переключения видимости корзины
+        function toggleCart() {
+            const popup = document.getElementById('cartPopup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Функция обновления содержимого корзины
+        function updateCart() {
+            // Обновляем счетчик товаров
+            document.getElementById('cartCount').textContent = cart.length;
+            
+            // Формируем список товаров
+            document.getElementById('cartItems').innerHTML = cart.map(game => `
+                <div class="cart-item">
+                    ${game} - ${prices[game]} ₽
+                </div>
+            `).join('');
+            
+            // Рассчитываем общую сумму
+            const total = cart.reduce((sum, game) => sum + prices[game], 0);
+            document.getElementById('cartTotal').textContent = total;
+        }
+        
+        // Функция очистки корзины
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

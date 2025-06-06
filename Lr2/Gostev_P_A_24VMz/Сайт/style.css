@@ -1,0 +1,163 @@
+/* Основные стили страницы */
+body {
+    font-family: Arial, sans-serif; /* Шрифт по умолчанию */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0;
+    background: #1e1e1e; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    line-height: 1.6; /* Межстрочный интервал */
+}
+
+/* Шапка сайта */
+.header {
+    background: #171a21; /* Цвет фона шапки */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; /* Распределение элементов */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+/* Навигационное меню */
+.nav a {
+    color: #b8b6b4; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    color: white; /* Цвет при наведении */
+}
+
+.nav a.active {
+    font-weight: bold; /* Выделение активной страницы */
+}
+
+/* Основное содержимое */
+.content {
+    padding: 20px;
+    max-width: 800px; /* Ограничение ширины контента */
+    margin: 0 auto; /* Центрирование */
+}
+
+/* Стили карточек игр */
+.game {
+    background: #2a3f5a; /* Фон карточки */
+    padding: 15px;
+    margin-bottom: 15px; /* Отступ снизу */
+    border-radius: 5px; /* Скругленные углы */
+}
+
+.game p {
+    margin: 8px 0; /* Отступы для абзацев */
+}
+
+/* Общие стили кнопок */
+.button, button {
+    background: #5c7e10; /* Зеленый цвет */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer; /* Указатель при наведении */
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.button:hover, button:hover {
+    background: #6e9613; /* Цвет при наведении */
+}
+
+/* Стили корзины */
+.cart {
+    position: fixed; /* Фиксированное положение */
+    bottom: 20px;
+    right: 20px;
+    background: #5c7e10;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100; /* Поверх других элементов */
+}
+
+/* Всплывающее окно корзины */
+.cart-popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    background: #2a3f5a;
+    padding: 15px;
+    border-radius: 5px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Тень */
+}
+
+/* Элементы в корзине */
+.cart-item {
+    padding: 5px 0;
+    border-bottom: 1px dashed #3d4f65; /* Пунктирная граница */
+}
+
+/* Общая сумма в корзине */
+.cart-sum {
+    font-weight: bold;
+    margin: 10px 0;
+    padding-top: 10px;
+    border-top: 1px solid #3d4f65; /* Сплошная граница */
+}
+
+/* Блок преимуществ */
+.advantages {
+    background: #2a3f5a;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.advantages ul {
+    padding-left: 20px; /* Отступ списка */
+}
+
+.advantages li {
+    margin-bottom: 10px; /* Отступ между пунктами */
+}
+/* Стили для страницы "О нас" */
+.about-section {
+    background: #2a3f5a;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.developer-info {
+    margin: 30px 0;
+}
+
+.developer-card {
+    background: #2a3f5a;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.developer-card h4 {
+    color: #66c0f4;
+    margin-top: 0;
+}
+
+.contacts {
+    background: #2a3f5a;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.contacts a {
+    color: #66c0f4;
+    text-decoration: none;
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
